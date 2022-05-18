@@ -7,7 +7,9 @@ subcommands.
 ## Subcommands
 
 #### view 
+  
   goIdeas view
+  
 Allows the user to view the current list.
 
 #### new
