@@ -25,14 +25,14 @@ func writeToFile(path string, list *[]Ideas) {
 
 	if err != nil {
 		fmt.Println(err.Error())
-		return
+		os.Exit(1)
 	}
 
 	err = ioutil.WriteFile(path, bytes, 0744)
 
 	if err != nil {
 		fmt.Println(err.Error())
-		return
+		os.Exit(1)
 	}
 
 }
@@ -42,14 +42,14 @@ func readFromFile(path string, list *[]Ideas) {
 
 	if err != nil {
 		fmt.Println(err.Error())
-		return
+		os.Exit(1)
 	}
 
 	err = json.Unmarshal(bytes, list)
 
 	if err != nil {
 		fmt.Println(err.Error())
-		return
+		os.Exit(1)
 	}
 }
 
@@ -98,6 +98,12 @@ func main() {
 	editIndex := editcmd.Int("i", -1, "The index of the ideas to edit")
 	editText := editcmd.String("t", "", "The text to replace")
 
+	if len(os.Args) < 2 {
+		fmt.Println("Subcommand is requiried...")
+		fmt.Println("Try: view new del edit")
+		os.Exit(1)
+	}
+
 	//Check if list.json exist
 	if !fileExist(path) {
 		writeToFile(path, listPointer)
@@ -118,13 +124,14 @@ func main() {
 		delcmd.Parse(os.Args[2:])
 		if *delIndex == -1 {
 			fmt.Println("Invalid Index...")
-			return
+			os.Exit(1)
 		}
 		listPointer = removeFromList(*delIndex-1, listPointer)
 	case "edit":
 		editcmd.Parse(os.Args[2:])
 		if *editIndex == -1 {
 			fmt.Println("Invalid Index...")
+			os.Exit(1)
 		}
 		editList(*editIndex-1, *editText, listPointer)
 	}
