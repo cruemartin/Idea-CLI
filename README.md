@@ -28,6 +28,6 @@ To use the Idea-CLI you must first have golang installed on your system. Follow 
 
 Clone this repo to your system.
 
-Once go is installed run:
+Once go is installed run the following command.
     go build goIdeas.go
 This will build the executable and you are now free to use the Idea-CLI.
