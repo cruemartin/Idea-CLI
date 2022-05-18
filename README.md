@@ -24,10 +24,13 @@ displayed.
 Allows the user to delete an entry from the list. The indexs of the list entries will then be updated and the list will be displayed.
 
 ## Installation
-To use the Idea-CLI you must first have golang installed on your system. Follow the steps at the [Golang website](https://go.dev/doc/install)
+To use the Idea-CLI you must first have golang installed on your system. Follow the steps at the [Golang website](https://go.dev/doc/install).
 
 Clone this repo to your system.
 
 Once go is installed run the following command.
+    
     go build goIdeas.go
+    
 This will build the executable and you are now free to use the Idea-CLI.
+
